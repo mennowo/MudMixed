@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="CodingConnected.YAVC.Models">
+      <HintPath>..\..\CodingConnected.YAVC\web_sqlite\Libs\CodingConnected.YAVC.Models.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

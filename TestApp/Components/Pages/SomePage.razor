@@ -1,0 +1,10 @@
+﻿@page "/some/{message}"
+
+<h3>SomePage</h3>
+
+<div>Some other page: @Message</div>
+
+@code {
+    [Parameter]
+    public string Message { get; set; }
+}

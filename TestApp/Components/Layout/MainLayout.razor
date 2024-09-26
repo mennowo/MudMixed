@@ -1,0 +1,49 @@
+﻿@inherits LayoutComponentBase
+
+<MudThemeProvider />
+<MudDialogProvider @rendermode="RenderMode.InteractiveServer" />
+<MudSnackbarProvider @rendermode="RenderMode.InteractiveServer" />
+
+<MudLayout>
+    <MudAppBar>
+        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => _navMenuOpen = !_navMenuOpen)" />
+        <MudSpacer />
+        <MudIconButton Icon="@Icons.Material.Filled.ViewList" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => _secondListOpen = !_secondListOpen)" />
+    </MudAppBar>
+    <MudDrawer @bind-Open="@_navMenuOpen">
+        <NavMenu/>
+    </MudDrawer>
+    <MudDrawer Anchor="Anchor.Right" @bind-Open="@_secondListOpen">
+        <SecondList />
+    </MudDrawer>
+    @if (_dataloaded)
+    {
+        <MudMainContent>
+            @Body
+        </MudMainContent>
+    }
+    else
+    {
+        <div>Loading data...</div>
+    }
+</MudLayout>
+
+
+<div id="blazor-error-ui">
+    An unhandled error has occurred.
+    <a href="" class="reload">Reload</a>
+    <a class="dismiss">🗙</a>
+</div>
+
+@code {
+    bool _navMenuOpen = true;
+    bool _secondListOpen = true;
+    bool _dataloaded = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        // simulate loading
+        await Task.Delay(3000);
+        _dataloaded = true;
+    }
+}
