@@ -17,10 +17,4 @@
     <ProjectReference Include="..\TestApp.Client\TestApp.Client.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="yavc_test.sqlite">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
 </Project>
