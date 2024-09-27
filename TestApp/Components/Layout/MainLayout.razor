@@ -1,9 +1,6 @@
 ﻿@inherits LayoutComponentBase
 
-<MudPopoverProvider />
 <MudThemeProvider />
-<MudDialogProvider />
-<MudSnackbarProvider />
 
 <MudLayout>
     <MudAppBar>
@@ -17,16 +14,9 @@
     <MudDrawer Anchor="Anchor.Right" @bind-Open="@_secondListOpen">
         <SecondList />
     </MudDrawer>
-    @if (_dataloaded)
-    {
-        <MudMainContent>
-            @Body
-        </MudMainContent>
-    }
-    else
-    {
-        <div>Loading data...</div>
-    }
+    <MudMainContent>
+        @Body
+    </MudMainContent>
 </MudLayout>
 
 
@@ -39,12 +29,9 @@
 @code {
     bool _navMenuOpen = true;
     bool _secondListOpen = true;
-    bool _dataloaded = false;
 
     protected override async Task OnInitializedAsync()
     {
-        // simulate loading
-        await Task.Delay(3000);
-        _dataloaded = true;
+        await base.OnInitializedAsync();
     }
 }
