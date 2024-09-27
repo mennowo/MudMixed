@@ -8,10 +8,10 @@
     <MudSpacer />
     <MudIconButton Icon="@Icons.Material.Filled.ViewList" Color="Color.Inherit" Edge="Edge.Start" OnClick="ToggleSecondList" />
 </MudAppBar>
-<MudDrawer Open="_navMenuOpen">
+<MudDrawer @bind-Open="@_navMenuOpen" Style="height: 100vh;">
     <NavMenu/>
 </MudDrawer>
-<MudDrawer Anchor="Anchor.Right" Open="_secondListOpen">
+<MudDrawer Anchor="Anchor.Right" @bind-Open="@_secondListOpen" Style="height: 100vh;">
     <SecondList />
 </MudDrawer>
 
@@ -36,19 +36,19 @@
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        if (firstRender)
-        {
-            _jsModule = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./Components/Layout/LayoutHolder.razor.js");
-        }
-        if (_refreshNavMenuRender)
-        {
-            await _jsModule!.InvokeVoidAsync("HandleNavMenuToggled", _navMenuOpen);
-            _refreshNavMenuRender = false;
-        }
-        if (_refreshSecondListRender)
-        {
-            await _jsModule!.InvokeVoidAsync("HandleSecondListToggled", _secondListOpen);
-            _refreshSecondListRender = false;
-        }
+         if (firstRender)
+         {
+             _jsModule = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./Components/Layout/LayoutHolder.razor.js");
+         }
+         if (_refreshNavMenuRender)
+         {
+             await _jsModule!.InvokeVoidAsync("HandleNavMenuToggled", _navMenuOpen);
+             _refreshNavMenuRender = false;
+         }
+         if (_refreshSecondListRender)
+         {
+             await _jsModule!.InvokeVoidAsync("HandleSecondListToggled", _secondListOpen);
+             _refreshSecondListRender = false;
+         }
     }
 }
