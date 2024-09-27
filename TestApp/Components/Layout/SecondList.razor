@@ -1,10 +1,31 @@
-﻿@rendermode InteractiveServer
+﻿@inject NavigationManager NavigationManager
 
-<MudNavMenu>
-    <MudNavLink Href="/some/hello" Match="NavLinkMatch.All">Hello</MudNavLink>
-    <MudNavLink Href="/some/goodbye" Match="NavLinkMatch.All">Goodbye</MudNavLink>
-</MudNavMenu>
+<MudList T="string" Color="Color.Dark">
+    <MudListItem>
+        <div class="d-flex">
+            Item1
+            <MudSpacer />
+            <MudMenu Icon="@Icons.Material.Filled.MenuOpen" Size="Size.Small">
+                <MudMenuItem OnClick="() => NavigationManager.NavigateTo(_hello)" Icon="@Icons.Material.Outlined.Boy" IconSize="Size.Small">Hello</MudMenuItem>
+                <MudMenuItem OnClick="() => NavigationManager.NavigateTo(_goodbye)" Icon="@Icons.Material.Outlined.Girl" IconSize="Size.Small">Goodbye</MudMenuItem>
+            </MudMenu>
+        </div>
+    </MudListItem>
+    <MudListItem>
+        <div class="d-flex">
+            Item2
+            <MudSpacer />
+            <MudMenu Icon="@Icons.Material.Filled.MenuOpen" Size="Size.Small">
+                <MudMenuItem OnClick="() => NavigationManager.NavigateTo(_hola)" Icon="@Icons.Material.Outlined.Girl" IconSize="Size.Small">Hola</MudMenuItem>
+                <MudMenuItem OnClick="() => NavigationManager.NavigateTo(_ciao)" Icon="@Icons.Material.Outlined.Boy" IconSize="Size.Small">Ciao</MudMenuItem>
+            </MudMenu>
+        </div>
+    </MudListItem>
+</MudList>
 
 @code{
-    
+    string _hello = "/some/hello";
+    string _goodbye = "/some/goodbye";
+    string _hola = "/some/hola";
+    string _ciao = "/some/ciao";
 }
